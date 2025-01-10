@@ -17,6 +17,7 @@ body {
   line-height: 1.7;
   color: #4d4d4d;
   background: #fff;
+  transition: all 2s ease;
 }
 
 #page {
@@ -648,7 +649,8 @@ h1, h2, h3, h4, h5, h6, figure {
   float: left;
   width: 100%;
 }
-.progress-wrap h3 .name-left {
+.progress-wrap h3 .name-left,
+.progress-wrap h3 .value-right {
   float: left;
 }
 .progress-wrap h3 .value-right {
@@ -1288,6 +1290,114 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    border: 2px solid #FF9000;
+    background: transparent;
+    color: #FF9000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+    background: #FF9000;
+    color: #fff;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.dark-theme h1, 
+.dark-theme h2, 
+.dark-theme h3, 
+.dark-theme h4, 
+.dark-theme h5, 
+.dark-theme h6,
+.progress-wrap h3,
+.chart span strong {
+    color: #fff;
+    transition: color 2s ease;
+}
+
+.dark-theme .progress-wrap h3 {
+    color: #fff;
+}
+
+.dark-theme .chart span strong {
+    color: #fff;
+}
+
+.dark-theme #fh5co-skills {
+    background: #1a1a1a;
+}
+
+.dark-theme .progress {
+    background-color: #333;
+    transition: background-color 2s ease;
+}
+
+/* Add these styles to handle progress bar text colors */
+.progress-wrap h3 .name-left,
+.progress-wrap h3 .value-right {
+    transition: color 2s ease;
+    color: #000; /* Default color for light mode */
+}
+
+.dark-theme .progress-wrap h3 .name-left,
+.dark-theme .progress-wrap h3 .value-right {
+    color: #fff; /* Color for dark mode */
+}
+
+/* Update the base transitions */
+body, 
+h1, h2, h3, h4, h5, h6,
+.progress-wrap h3,
+.chart span strong,
+#fh5co-skills,
+.progress,
+.progress-wrap h3 .name-left,
+.progress-wrap h3 .value-right {
+    transition: all 2s ease;
+}
+
+/* Dark theme styles remain the same but will now transition smoothly in both directions */
+.dark-theme {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* ... rest of your dark theme styles ... */
+
+/* Add these styles for the circular charts */
+.chart span {
+    transition: color 2s ease;
+    color: #000; /* Default color for light mode */
+}
+
+.chart span strong {
+    transition: color 2s ease;
+    color: #000; /* Default color for light mode */
+}
+
+.dark-theme .chart span,
+.dark-theme .chart span strong {
+    color: #fff; /* Color for dark mode */
 }
 
 /*# sourceMappingURL=style.css.map */

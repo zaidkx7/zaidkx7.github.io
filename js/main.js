@@ -145,5 +145,35 @@
 		skillsWayPoint();
 	});
 
+	document.addEventListener('DOMContentLoaded', function() {
+		const toggleBtn = document.getElementById('theme-toggle-btn');
+		const icon = toggleBtn.querySelector('i');
+		
+		// Check for saved theme preference, default to 'dark' if none exists
+		const savedTheme = localStorage.getItem('theme') || 'dark';
+		
+		// Apply dark theme by default or if saved preference is dark
+		if (savedTheme === 'dark') {
+			document.body.classList.add('dark-theme');
+			icon.classList.remove('icon-sun');
+			icon.classList.add('icon-moon');
+			localStorage.setItem('theme', 'dark');
+		}
+		
+		// Toggle theme
+		toggleBtn.addEventListener('click', function() {
+			document.body.classList.toggle('dark-theme');
+			
+			if (document.body.classList.contains('dark-theme')) {
+				icon.classList.remove('icon-sun');
+				icon.classList.add('icon-moon');
+				localStorage.setItem('theme', 'dark');
+			} else {
+				icon.classList.remove('icon-moon');
+				icon.classList.add('icon-sun');
+				localStorage.setItem('theme', 'light');
+			}
+		});
+	});
 
 }());
