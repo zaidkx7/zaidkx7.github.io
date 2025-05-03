@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { TypedText } from "@/components/TypedText";
 
+import ZaidImg from '../assets/zaid.jpeg';
+
 export function Hero() {
   return (
     <section className="pt-28 pb-16 md:pt-36 md:pb-24">
@@ -11,7 +13,7 @@ export function Hero() {
         <div className="flex flex-col items-center text-center space-y-4">
           <Avatar className="w-40 h-40 border-2 border-primary mb-4 animate-fade-in">
             <AvatarImage
-              src="src/assets/zaid.jpeg"
+              src={ZaidImg}
               alt="Muhammad Zaid"
               loading="eager"
             />

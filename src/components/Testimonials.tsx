@@ -1,6 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { Star, StarHalf } from "lucide-react";
 
+import DanyalImg from '../assets/danyal.jpeg';
+import IrshadImg from '../assets/irshad.jpeg';
+import HamzaImg from '../assets/hamza.png';
+
 interface Testimonial {
   quote: string;
   author: string;
@@ -16,7 +20,7 @@ export function Testimonials() {
         "Muhammad developed an automation system that saved our marketing team 20+ hours per week. His attention to detail and clean code made future maintenance a breeze.",
       author: "Muhammad Danyal",
       position: "Cyber Security Specialist",
-      image: "src/assets/danyal.jpeg",
+      image: DanyalImg,
       rating: 5,
     },
     {
@@ -24,7 +28,7 @@ export function Testimonials() {
         "The web scraping solution Muhammad built for our e-commerce analytics platform was exactly what we needed. It's robust, reliable, and has scaled effortlessly with our business growth.",
       author: "Muhammad Irshad",
       position: "Software Engineer, Machine Learning Engineer",
-      image: "src/assets/irshad.jpeg",
+      image: IrshadImg,
       rating: 4.5,
     },
     {
@@ -32,7 +36,7 @@ export function Testimonials() {
         "Working with Muhammad on our backend API was a great experience. He not only delivered excellent code but also provided valuable insights on security best practices.",
       author: "Hamza Ali",
       position: "Full Stack Developer",
-      image: "src/assets/hamza.png",
+      image: HamzaImg,
       rating: 5,
     },
   ];
@@ -93,14 +97,14 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-[#1A1F2C] to-[#121621] text-white">
+    <section className="py-16 bg-background text-foreground transition-colors">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3 bg-clip-text text-white">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3 bg-clip-text text-foreground">
             Clients Testimonials
           </h2>
           <div className="w-20 h-1 bg-primary rounded-full mb-6"></div>
-          <p className="max-w-[700px] text-[#8E9196]">
+          <p className="max-w-[700px] text-muted-foreground">
             Real feedback from clients who've experienced transformative results
           </p>
         </div>
@@ -118,7 +122,7 @@ export function Testimonials() {
                 key={index} 
                 className="w-full flex-shrink-0 px-4"
               >
-                <div className="bg-[#121621]/60 backdrop-blur-sm rounded-2xl p-8 md:p-10 shadow-xl border border-[#1A1F2C]/80 relative overflow-hidden">
+                <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 md:p-10 shadow-xl border border-border relative overflow-hidden transition-colors">
                   {/* Decorative elements */}
                   <div className="absolute top-0 right-0 w-40 h-40 bg-[#7E69AB]/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
                   <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#9b87f5]/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
@@ -136,8 +140,8 @@ export function Testimonials() {
                         />
                       </div>
                       <div className="flex flex-col md:mt-2">
-                        <h3 className="text-xl font-semibold text-white">{testimonial.author}</h3>
-                        <p className="text-[#8E9196] text-sm">{testimonial.position}</p>
+                        <h3 className="text-xl font-semibold text-foreground">{testimonial.author}</h3>
+                        <p className="text-muted-foreground text-sm">{testimonial.position}</p>
                         <div className="flex mt-2 gap-1">
                           {renderStars(testimonial.rating)}
                         </div>

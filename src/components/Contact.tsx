@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +12,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Github, Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
 import { z } from "zod";
+import { useTheme } from "./ThemeProvider";
+
+import UpworkImg from '../assets/upwork.svg';
+import UpworkImgBlack from '../assets/upwork_black.svg';
 
 // Define schema for form validation
 const contactSchema = z.object({
@@ -32,6 +35,7 @@ export function Contact() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { theme } = useTheme();
 
   const validateField = (name: keyof ContactFormData, value: string) => {
     try {
@@ -189,7 +193,11 @@ export function Contact() {
                   className="bg-accent hover:bg-accent/80 transition-colors p-3 rounded-full"
                   aria-label="Upwork Profile"
                 >
-                <img src="src/assets/upwork.svg" alt="Upwork" className="h-6 w-6 fill-white" />
+                  <img
+                    src={theme === "dark" ? UpworkImg : UpworkImgBlack}
+                    alt="Upwork"
+                    className="h-6 w-6"
+                  />
                   <span className="sr-only">Upwork</span>
                 </a>
               </div>

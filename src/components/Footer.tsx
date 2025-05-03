@@ -1,9 +1,14 @@
 
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 
+import UpworkImg from '../assets/upwork.svg';
+import UpworkImgBlack from '../assets/upwork_black.svg';
+
+import { useTheme } from "./ThemeProvider";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  
+  const { theme } = useTheme();
   return (
     <footer className="bg-accent/30 py-8">
       <div className="container px-4 md:px-6">
@@ -57,7 +62,11 @@ export function Footer() {
               className="text-foreground/70 hover:text-foreground transition-colors"
               aria-label="Upwork"
             >
-              <img src="src/assets/upwork.svg" alt="Upwork" className="h-5 w-5 fill-white" />
+              <img
+                src={theme === "dark" ? UpworkImg : UpworkImgBlack}
+                alt="Upwork"
+                className="h-5 w-5"
+              />
             </a>
           </div>
         </div>
