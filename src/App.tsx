@@ -8,6 +8,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SunspotLoader from "./components/Loader";
+import UniBlitzPrivacy from "./pages/UniBlitzPrivacy";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/uniblitz/privacy" element={<UniBlitzPrivacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
