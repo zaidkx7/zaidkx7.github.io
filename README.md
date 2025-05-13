@@ -83,8 +83,8 @@ I thrive on solving complex challenges through clean, scalable code and have del
 ## 🚀 Getting Started
 
 ```sh
-git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
+git clone https://github.com/zaidkx7/zaidkx7.github.io.git
+cd zaidkx7.github.io
 npm install
 npm run dev
 ```
