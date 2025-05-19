@@ -15,6 +15,11 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
+  build: {
+    rollupOptions: {
+      input: "/index.html",
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
