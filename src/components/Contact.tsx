@@ -13,11 +13,11 @@ import { useToast } from "@/components/ui/use-toast";
 import { Github, Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { useTheme } from "./ThemeProvider";
+import { useForm, ValidationError } from '@formspree/react';
 
 import UpworkImg from '../assets/upwork.svg';
 import UpworkImgBlack from '../assets/upwork_black.svg';
 
-// Define schema for form validation
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }).max(50),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -28,13 +28,13 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export function Contact() {
   const { toast } = useToast();
+  const [state, handleSubmit] = useForm("xyzwaako");
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     message: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { theme } = useTheme();
 
   const validateField = (name: keyof ContactFormData, value: string) => {
@@ -55,7 +55,6 @@ export function Contact() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Validate the field as user types
     const fieldError = validateField(name as keyof ContactFormData, value);
     setErrors(prev => ({
       ...prev,
@@ -63,10 +62,9 @@ export function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate all fields before submission
     const formErrors: Partial<Record<keyof ContactFormData, string>> = {};
     let hasErrors = false;
 
@@ -84,21 +82,16 @@ export function Contact() {
       return;
     }
 
-    setIsSubmitting(true);
+    await handleSubmit(e as any);
 
-    // Generate a CSRF token for form submission (in a real app this would come from the server)
-    const csrfToken = Math.random().toString(36).substring(2);
-
-    // Simulate form submission with CSRF protection
-    setTimeout(() => {
+    if (state.succeeded) {
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
-      setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -213,7 +206,7 @@ export function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleFormSubmit} className="space-y-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium">
                       Name
@@ -256,6 +249,7 @@ export function Contact() {
                         {errors.email}
                       </p>
                     )}
+                    <ValidationError prefix="Email" field="email" errors={state.errors} />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">
@@ -264,7 +258,7 @@ export function Contact() {
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Tell me about your project..."
+                      placeholder="Your message..."
                       rows={5}
                       required
                       value={formData.message}
@@ -278,9 +272,10 @@ export function Contact() {
                         {errors.message}
                       </p>
                     )}
+                    <ValidationError prefix="Message" field="message" errors={state.errors} />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                  <Button type="submit" className="w-full" disabled={state.submitting}>
+                    {state.submitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
