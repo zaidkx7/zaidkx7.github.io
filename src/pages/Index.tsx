@@ -10,6 +10,7 @@ import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import { initScrollReveal } from "../utils/ScrollReveal";
 import { Experience } from "../components/Experience";
+import { Companies } from "../components/Companies";
 
 const Index = () => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const Index = () => {
       <Skills />
       <Projects />
       <Testimonials />
+      <Companies />
       <Experience />
       <Contact />
       <Footer />
