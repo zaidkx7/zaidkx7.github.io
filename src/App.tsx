@@ -6,32 +6,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
-import FuzzyText from "./components/FuzzyText";
 import SplashCursor from "./components/SplashCursor";
+import LoadingScreen from "./components/Loader"
+import FuzzyText from "./components/FuzzyText";
 
 const queryClient = new QueryClient();
-
-const LoadingScreen = () => {
-  return (
-    <div className="flex items-center justify-center h-screen flex-col gap-4 bg-background">
-      <FuzzyText 
-        fontSize="3rem"
-        baseIntensity={0.2} 
-        hoverIntensity={0.5} 
-        enableHover={true}
-        color="#ffffff"
-      >
-        Loading...
-      </FuzzyText>
-    </div>
-  );
-};
 
 const MainApp = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 

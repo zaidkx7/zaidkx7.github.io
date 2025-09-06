@@ -27,9 +27,9 @@ export function Testimonials() {
       quote:
         "The web scraping solution Muhammad built for our e-commerce analytics platform was exactly what we needed. It's robust, reliable, and has scaled effortlessly with our business growth.",
       author: "Muhammad Irshad",
-      position: "Software Engineer, Machine Learning Engineer",
+      position: "DevOps Engineer",
       image: IrshadImg,
-      rating: 4.5,
+      rating: 5,
     },
     {
       quote:
@@ -128,7 +128,7 @@ export function Testimonials() {
                   <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#9b87f5]/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
                   
                   {/* Quote symbol */}
-                  <div className="absolute top-6 right-8 text-6xl text-[#9b87f5]/20 font-serif">"</div>
+                  <div className="absolute top-6 right-8 text-6xl text-[#9b87f5]/20 font-serif text-yellow-400">"</div>
                   
                   <div className="relative">
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6">
